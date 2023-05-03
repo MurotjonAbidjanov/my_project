@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/constants/constants.dart';
+import 'package:pinput/pinput.dart';
 
 class Verification1 extends StatefulWidget {
   const Verification1({Key? key}) : super(key: key);
@@ -64,17 +65,31 @@ class _Verification1State extends State<Verification1> {
                 ],
               ),
             ),
-            cSizedBoxH55,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                OTP_TextField(),
-                OTP_TextField(),
-                OTP_TextField(),
-                OTP_TextField(),
-              ],
+            Expanded(child: cSizedBoxH75),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: SizedBox(
+                child: Pinput(
+                  length: 4,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  defaultPinTheme: PinTheme(
+                    height: 55,
+                    width: 55,
+                    textStyle: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                      color: cNumColor,
+                    ),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: cBackgrundColor,
+                        border: Border.all(color: cActive, width: 1.5)),
+                  ),
+                ),
+              ),
             ),
-            cSizedBoxH55,
+            Expanded(child: cSizedBoxH55),
             Positioned(
               child: Container(
                 child: Center(
@@ -95,42 +110,10 @@ class _Verification1State extends State<Verification1> {
             Text(
               'Resend OTP',
               style: cTextStyleRec,
-            )
+            ),
+            cSizedBoxH55
           ],
         ),
-      ),
-    );
-  }
-}
-
-class OTP_TextField extends StatelessWidget {
-  const OTP_TextField({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 60,
-      width: 50,
-      child: TextField(
-        autofocus: true,
-        textAlign: TextAlign.center,
-        keyboardType: TextInputType.number,
-        maxLength: 1,
-        cursorColor: Theme.of(context).primaryColor,
-        decoration: InputDecoration(
-            border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(100),
-                borderSide:
-                    BorderSide(width: 3, color: cColor.withOpacity(0.5))),
-            counterText: '',
-            hintStyle: TextStyle(color: Colors.black, fontSize: 20.0)),
-        onChanged: (value) {
-          if (value.length == 1) {
-            FocusScope.of(context).nextFocus();
-          }
-        },
       ),
     );
   }
