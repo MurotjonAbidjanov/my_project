@@ -91,25 +91,39 @@ class _Verification1State extends State<Verification1> {
             ),
             Expanded(child: cSizedBoxH55),
             Positioned(
-              child: Container(
-                child: Center(
-                  child: Text(
-                    'Verify'.toUpperCase(),
-                    style: cTextStyle,
+              child: InkWell(
+                onTap: () {},
+                child: Container(
+                  child: Center(
+                    child: Text(
+                      'Verify'.toUpperCase(),
+                      style: cTextStyle,
+                    ),
                   ),
+                  width: 320,
+                  height: 55,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30), color: cActive),
                 ),
-                width: 320,
-                height: 55,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30), color: cActive),
               ),
             ),
             SizedBox(
-              height: 13,
+              height: 15,
             ),
-            Text(
-              'Resend OTP',
-              style: cTextStyleRec,
+            InkWell(
+              onTap: () {},
+              child: Text(
+                'Resend OTP',
+                style: cTextStyleRec,
+              ),
+            ),
+            SizedBox(
+              width: 80,
+              height: 10,
+              child: Divider(
+                color: cActive,
+                thickness: 1,
+              ),
             ),
             cSizedBoxH55
           ],
