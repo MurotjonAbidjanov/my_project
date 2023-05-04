@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:my_project/constants/constants.dart';
 import 'package:pinput/pinput.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class Verification1 extends StatefulWidget {
   const Verification1({Key? key}) : super(key: key);
@@ -27,19 +29,21 @@ class _Verification1State extends State<Verification1> {
               child: Stack(
                 children: [
                   Positioned(
-                    left: 20,
-                    top: 35,
-                    child: Icon(
-                      Icons.arrow_back,
-                      size: 40,
-                      color: cBackgrundColor,
-                    ),
-                  ),
+                      left: 0,
+                      top: 10,
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.arrow_back,
+                          size: 36,
+                          color: cBackgrundColor,
+                        ),
+                      )),
                   Positioned(
                     width: 233,
                     height: 30,
                     left: 20,
-                    top: 86,
+                    top: 80,
                     child: Text(
                       'OTP verification',
                       style: TextStyle(
@@ -52,7 +56,7 @@ class _Verification1State extends State<Verification1> {
                     width: 260,
                     height: 40,
                     left: 20,
-                    top: 124,
+                    top: 120,
                     child: Text(
                       'Please enter your correct OTP for number verification process.',
                       style: TextStyle(
@@ -92,7 +96,28 @@ class _Verification1State extends State<Verification1> {
             Expanded(child: cSizedBoxH55),
             Positioned(
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  showDialog<void>(
+                    context: context,
+                    barrierDismissible: false, // user must tap button!
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        content: SingleChildScrollView(
+                          child: ListBody(
+                            children: <Widget>[
+                              Center(
+                                child: LoadingAnimationWidget.hexagonDots(
+                                  color: cActive,
+                                  size: 100,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                },
                 child: Container(
                   child: Center(
                     child: Text(
