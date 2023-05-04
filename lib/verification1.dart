@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:my_project/constants/constants.dart';
 import 'package:pinput/pinput.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
 
 class Verification1 extends StatefulWidget {
   const Verification1({Key? key}) : super(key: key);
@@ -32,7 +31,9 @@ class _Verification1State extends State<Verification1> {
                       left: 0,
                       top: 10,
                       child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
                         icon: Icon(
                           Icons.arrow_back,
                           size: 36,
